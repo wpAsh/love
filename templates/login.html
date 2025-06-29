@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-md-6 col-lg-4">
+        <div class="login-card p-4 p-md-5 text-center">
+            <div class="heart-lock mb-4">
+                <div class="heart-icon animate__animated animate__heartBeat">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <i class="fas fa-lock lock-icon"></i>
+            </div>
+            
+            <h2 class="mb-4">Our Secret Diary</h2>
+            <p class="mb-4">Enter our special code to continue</p>
+            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <form method="POST" class="mt-4">
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <input type="text" name="username" class="form-control" 
+                               placeholder="Our secret name" required>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        <input type="password" name="password" class="form-control" 
+                               placeholder="Our secret code" required>
+                    </div>
+                </div>
+                
+                <div class="form-check mb-3 text-start">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" checked>
+                    <label class="form-check-label" for="remember">
+                        Keep me logged in for 30 days
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-love w-100 mt-3">
+                    <i class="fas fa-key me-2"></i>Unlock Our Love Story
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

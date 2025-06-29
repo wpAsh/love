@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-md-8 text-center">
+        <!-- Logout Button (Top Right) -->
+        <div class="text-end mb-4">
+            <a href="{{ url_for('logout') }}" class="btn btn-outline-love">
+                <i class="fas fa-sign-out-alt me-1"></i>Logout
+            </a>
+        </div>
+        
+        <div class="love-card p-4 p-md-5">
+            <!-- Time-based greeting -->
+            <h1 class="greeting mb-3">{{ time_greeting }}</h1>
+            
+            <!-- "I love you" on a new line -->
+            <h1 class="love-message animate__animated animate__heartBeat">{{ love_message }}</h1>
+            
+            {% if first_visit %}
+            <h2 class="welcome-message animate__animated animate__fadeIn mt-4">Welcome princess to my humble place</h2>
+            {% else %}
+            <h2 class="welcome-message animate__animated animate__fadeIn mt-4">Welcome back princess</h2>
+            {% endif %}
+            
+            <div class="mt-5">
+                <a href="{{ url_for('diary') }}" class="heart-button">
+                    <i class="fas fa-book-open me-2"></i>Open Our Diary
+                </a>
+                
+                <div class="mt-3">
+                    <a href="{{ url_for('add_entry') }}" class="btn btn-outline-love">
+                        <i class="fas fa-plus me-2"></i>Add New Memory
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

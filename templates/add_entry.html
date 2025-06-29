@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4 mb-5">
+    <div class="admin-header mb-4 text-center">
+        <h2 class="love-title">Add to Our Love Diary</h2>
+        <p class="text-muted">Create a new memory for us</p>
+        
+        <div class="text-center mb-4">
+            <a href="{{ url_for('logout') }}" class="btn btn-sm btn-outline-love">
+                <i class="fas fa-sign-out-alt me-1"></i>Logout
+            </a>
+        </div>
+    </div>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show mb-4">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST" enctype="multipart/form-data" class="add-entry-form">
+        <div class="mb-4">
+            <label class="form-label h5">Memory Title</label>
+            <input type="text" name="title" class="form-control" required
+                   placeholder="Our special day...">
+        </div>
+        
+        <div class="mb-4">
+            <label class="form-label h5">Your Love Message</label>
+            <textarea name="content" class="form-control" rows="5" required
+                      placeholder="Write from your heart..."></textarea>
+        </div>
+        
+        <div class="mb-4">
+            <label class="form-label h5">Add Photos</label>
+            <div class="file-upload-area p-4 text-center rounded border-dashed">
+                <i class="fas fa-camera-retro fa-3x mb-3 text-muted"></i>
+                <p class="mb-2">Select photos of our memory</p>
+                <input type="file" name="photos" class="form-control" multiple accept="image/*">
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-love btn-lg">
+                <i class="fas fa-heart me-2"></i>Save to Our Diary
+            </button>
+            
+            <a href="{{ url_for('diary') }}" class="btn btn-outline-love btn-lg ms-2">
+                <i class="fas fa-book me-2"></i>View Diary
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

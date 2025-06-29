@@ -1,0 +1,48 @@
+/* Mobile Diary Styles */
+@media (max-width: 768px) {
+    .entry-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .entry-header small {
+        margin-top: 8px;
+    }
+    
+    .gallery-title {
+        font-size: 1.7rem;
+    }
+    
+    .love-title {
+        font-size: 2.5rem;
+    }
+    
+    .entry-card {
+        padding: 20px;
+    }
+    
+    .photo-gallery .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .love-title {
+        font-size: 2rem;
+    }
+    
+    .entry-content {
+        font-size: 1rem;
+    }
+    
+    .photo-gallery .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .empty-diary {
+        padding: 25px;
+        margin: 30px 15px;
+    }
+}

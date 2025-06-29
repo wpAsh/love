@@ -1,0 +1,532 @@
+:root {
+    --love-pink: #ffafcc;
+    --love-purple: #cdb4db;
+    --deep-love: #ff6b6b;
+    --text-color: #5a189a;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--love-pink), var(--love-purple));
+    min-height: 100vh;
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+.love-container {
+    position: relative;
+    z-index: 1;
+}
+
+.love-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+.greeting {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: var(--deep-love);
+    animation: fadeIn 2s;
+}
+
+
+.welcome-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--text-color);
+}
+
+.heart-button {
+    display: inline-block;
+    background: var(--deep-love);
+    color: white !important;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    transition: all 0.3s ease;
+}
+
+.heart-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 7px 20px rgba(255, 107, 107, 0.6);
+}
+
+.carousel-img {
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.entry-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.entry-header {
+    border-bottom: 2px solid var(--love-pink);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* Floating Hearts Animation */
+@keyframes floatHearts {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0.7; }
+    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+}
+
+.hearts-background::before {
+    content: "❤";
+    position: fixed;
+    top: -50px;
+    left: 5%;
+    font-size: 24px;
+    color: rgba(255, 107, 107, 0.7);
+    animation: floatHearts 15s linear infinite;
+    z-index: 0;
+}
+
+/* Create multiple hearts */
+.hearts-background::after {
+    content: "❤";
+    position: fixed;
+    top: -50px;
+    left: 15%;
+    font-size: 20px;
+    color: rgba(255, 175, 204, 0.7);
+    animation: floatHearts 18s linear infinite;
+    z-index: 0;
+}
+
+/* Add more heart elements */
+.hearts-background div {
+    position: fixed;
+    font-size: 16px;
+    color: rgba(205, 180, 219, 0.7);
+    animation: floatHearts 20s linear infinite;
+    z-index: 0;
+}
+
+/* Create 10 floating hearts */
+.hearts-background div:nth-child(1) { left: 10%; animation-delay: 0s; }
+.hearts-background div:nth-child(2) { left: 20%; animation-delay: -2s; }
+.hearts-background div:nth-child(3) { left: 30%; animation-delay: -4s; }
+.hearts-background div:nth-child(4) { left: 40%; animation-delay: -6s; }
+.hearts-background div:nth-child(5) { left: 50%; animation-delay: -8s; }
+.hearts-background div:nth-child(6) { left: 60%; animation-delay: -10s; }
+.hearts-background div:nth-child(7) { left: 70%; animation-delay: -12s; }
+.hearts-background div:nth-child(8) { left: 80%; animation-delay: -14s; }
+.hearts-background div:nth-child(9) { left: 90%; animation-delay: -16s; }
+.hearts-background div:nth-child(10) { left: 95%; animation-delay: -18s; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Add this to your existing CSS */
+.love-message {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: #ff0066;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: heartbeat 1.5s infinite;
+    margin: 20px 0;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+
+/* Make the greeting slightly larger */
+.greeting {
+    font-size: 3.8rem;
+}
+
+/* Adjust margins for better spacing */
+.welcome-message {
+    margin-top: 30px !important;
+}
+
+
+/* Diary Page Styles */
+.love-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #ff0066;
+    position: relative;
+    display: inline-block;
+}
+
+.love-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #ff0066, transparent);
+}
+
+.entry-card {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid #ff6b6b;
+}
+
+.entry-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.entry-header {
+    border-bottom: 2px dashed #ffafcc;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.entry-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #5a189a;
+    white-space: pre-line;
+}
+
+.photo-gallery {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 175, 204, 0.5);
+}
+
+.gallery-title {
+    font-family: 'Dancing Script', cursive;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+}
+
+.gallery-item img {
+    transition: transform 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    font-size: 0.9rem;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
+}
+
+.empty-diary {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 50px auto;
+    max-width: 600px;
+}
+
+.empty-icon {
+    color: #ffafcc;
+}
+
+/* Admin Form Styles */
+.admin-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-control-lg {
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+.file-upload-area {
+    background: rgba(255, 175, 204, 0.1);
+    border: 2px dashed var(--love-pink);
+    transition: background 0.3s;
+}
+
+.file-upload-area:hover {
+    background: rgba(255, 175, 204, 0.2);
+}
+
+.border-dashed {
+    border-style: dashed;
+}
+
+/* Textarea styling */
+textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+/* Login Page Styles */
+.login-card {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.heart-lock {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.heart-icon {
+    font-size: 80px;
+    color: #ff6b6b;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.lock-icon {
+    font-size: 40px;
+    color: white;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 2;
+}
+
+/* Add Entry Form */
+.add-entry-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.file-upload-area {
+    background: rgba(255, 175, 204, 0.1);
+    border: 2px dashed #ffafcc;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.file-upload-area:hover {
+    background: rgba(255, 175, 204, 0.2);
+    transform: translateY(-3px);
+}
+
+.border-dashed {
+    border-style: dashed;
+}
+
+/* Buttons */
+.btn-love {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-love:hover {
+    background: #e55a5a;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.btn-outline-love {
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+    background: transparent;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-outline-love:hover {
+    background: #ff6b6b;
+    color: white;
+}
+
+/* Animations */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+
+/* Add to static/css/style.css */
+
+
+/* Slider Container */
+.slider-container {
+    padding: 40px 0;
+    max-width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Memory Slider */
+.memory-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    height: 450px;
+}
+
+.slider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-slide {
+    min-width: 100%;
+    height: 100%;
+}
+
+.slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* Fix for potential whitespace */
+}
+
+/* Navigation Arrows */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 107, 107, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.slider-arrow:hover {
+    background: #ff6b6b;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-arrow {
+    left: 20px;
+}
+
+.next-arrow {
+    right: 20px;
+}
+
+/* Dots Navigation */
+.slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 10;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid white;
+}
+
+.slider-dot.active {
+    background: #ff6b6b;
+    transform: scale(1.2);
+    border-color: #ff6b6b;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .slider-container {
+        max-width: 95%;
+        padding: 30px 0;
+    }
+    
+    .memory-slider {
+        height: 350px;
+    }
+    
+    .slider-arrow {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .memory-slider {
+        height: 250px;
+    }
+    
+    .slider-dots {
+        bottom: 15px;
+    }
+}

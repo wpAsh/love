@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="diary-page">
+    <!-- Logout Button -->
+    <div class="text-end mb-4">
+        <a href="{{ url_for('logout') }}" class="btn btn-outline-love">
+            <i class="fas fa-sign-out-alt me-1"></i>Logout
+        </a>
+    </div>
+    
+    <!-- Top Photo Slider -->
+    {% if slider_images %}
+    <div class="slider-container">
+        <div id="memorySlider" class="memory-slider">
+            <div class="slider-track">
+                {% for image in slider_images %}
+                <div class="slider-slide">
+                    <img src="{{ url_for('static', filename='images/uploaded/' + image) }}" 
+                         class="slider-image"
+                         alt="Our memory">
+                </div>
+                {% endfor %}
+            </div>
+            <button class="slider-arrow prev-arrow">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-arrow next-arrow">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="slider-dots"></div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Add Entry Button -->
+    <div class="text-center mb-5">
+        <a href="{{ url_for('add_entry') }}" class="btn btn-love">
+            <i class="fas fa-plus me-2"></i>Add New Memory
+        </a>
+    </div>
+
+    <!-- Diary Entries -->
+    <div class="diary-entries">
+        <h2 class="text-center mb-4 love-title">Our Special Memories</h2>
+        
+        {% for item in entries_with_photos %}
+        <div class="entry-card mb-5">
+            <div class="entry-header">
+                <h3>{{ item.entry.title }}</h3>
+                <small class="text-muted">{{ item.entry.date.strftime('%B %d, %Y at %I:%M %p') }}</small>
+            </div>
+            
+            <div class="entry-content mb-4">
+                {{ item.entry.content | safe }}
+            </div>
+            
+            <!-- Entry Photos -->
+            {% if item.photos %}
+            <div class="entry-photos row mt-4">
+                {% for photo in item.photos %}
+                <div class="col-md-4 mb-3">
+                    <img src="{{ url_for('static', filename='images/uploaded/' + photo.filename) }}" 
+                         class="img-fluid rounded shadow"
+                         alt="Memory photo">
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="text-center empty-diary">
+            <div class="empty-icon mb-3">
+                <i class="fas fa-book-open fa-3x text-love"></i>
+            </div>
+            <h3>Our Diary is Waiting for Memories</h3>
+            <p class="lead">Add your first entry to start our love story</p>
+            <a href="{{ url_for('add_entry') }}" class="btn btn-love mt-3">
+                Create First Entry
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
