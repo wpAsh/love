@@ -16,6 +16,8 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
 
 # Ensure upload folder exists
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+app.template_folder = os.path.abspath('templates')
+app.static_folder = os.path.abspath('static')
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
