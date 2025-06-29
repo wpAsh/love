@@ -4,10 +4,14 @@ services:
     runtime: python
     buildCommand: |
       pip install -r requirements.txt
+      flask db init || true
+      flask db migrate -m "Initial migration"
       flask db upgrade
-    startCommand: gunicorn app:app
+    startCommand: gunicorn --bind 0.0.0.0:$PORT app:app  # MUST include $PORT
     envVars:
       - key: FLASK_APP
         value: app.py
-      - key: FLASK_ENV
-        value: production
+      - key: PORT
+        value: 10000  # Required for Render
+      - key: SQLALCHEMY_DATABASE_URI
+        value: sqlite:///instance/love.db
