@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timedelta
@@ -17,7 +18,7 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 db = SQLAlchemy(app)
-
+migrate = Migrate(app, db)
 # Database Models
 class DiaryEntry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
