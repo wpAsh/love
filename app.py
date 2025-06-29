@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = 'your_very_secret_key_here'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///love.db'
 app.config['UPLOAD_FOLDER'] = 'static/images/uploaded'
-app.config['ADMIN_USERNAME'] = 'our_love'
+app.config['ADMIN_USERNAME'] = 'Honey'
 app.config['ADMIN_PASSWORD_HASH'] = generate_password_hash('05112024')  # Change this!
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
 
@@ -165,6 +165,9 @@ def add_entry():
 def logout():
     session.pop('admin_logged_in', None)
     flash('You have been logged out', 'info')
+    return redirect(url_for('login'))
+@app.route('/our_special_code')
+def special_redirect():
     return redirect(url_for('login'))
 @app.context_processor
 def device_check():
